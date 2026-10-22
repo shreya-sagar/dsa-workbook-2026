@@ -1,6 +1,43 @@
 # DSA Workbook 2026
 
-## 1. Java Arrays vs ArrayList
+## Patterns
+
+### 1. Hashing — Presence Array
+
+**Concept:** Use an array to track whether a value has already been encountered.
+
+**When to use:**
+- Check if an array contains duplicates.
+- Find repeating elements.
+- Track whether values have appeared before.
+- Count frequencies of values (with a frequency array).
+
+**Java Implementation:**
+
+```java
+public boolean containsDuplicate(int[] nums) {
+    int[] seen = new int[11];
+
+    for (int num : nums) {
+        if (seen[num] == 1) {
+            return true;
+        }
+        seen[num] = 1;
+    }
+
+    return false;
+}
+```
+
+**Complexity:**
+- Time: `O(n)`
+- Space: `O(k)`, where `k` is the size of the value range.
+
+**Limitation:** This implementation assumes all values are between `0` and `10`. For arbitrary integer values, use a `HashSet<Integer>`.
+
+**Recognition clue:** "Have I seen this value before?" → Think **Hashing — Presence Array**.
+
+## Java Arrays vs ArrayList
 
 **Array**
 - Fixed size; index access: O(1).
